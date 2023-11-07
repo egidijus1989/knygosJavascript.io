@@ -81,6 +81,7 @@ let knyguKatalogas =
     }
 
 let accordion = document.querySelector('.accordion');
+
 for (let kategorija in knyguKatalogas){
     let accordionItem = document.createElement('div');
     accordionItem.classList="accordion-item";
@@ -89,8 +90,14 @@ for (let kategorija in knyguKatalogas){
     let accordionButton = document.createElement('button');
     accordionButton.classList="accordion-button";
     accordionButton.type='button';
+    accordionButton.setAttribute("data-bs-toggle", "collapse");
+    accordionButton.setAttribute("data-bs-target", "#collapseOne");
+    accordionButton.setAttribute("aria-expanded", "true");
+    accordionButton.setAttribute("aria-controls", "collapseOne");
     let accordionCollapse = document.createElement('div');
     accordionCollapse.classList='accordion-collapse collapse show';
+    accordionCollapse.setAttribute("id", "collapseOne");
+    accordionCollapse.setAttribute("data-bs-parent", "#accordionExample");
     let accordionBody = document.createElement('div');
     accordionBody.classList='accordion-body';
     accordionButton.textContent = `${kategorija} (${knyguKatalogas[kategorija].length} knygos)`;
@@ -100,8 +107,6 @@ for (let kategorija in knyguKatalogas){
     accordionItem.appendChild(accordionCollapse);
     accordion.appendChild(accordionItem);
     for(knyga of knyguKatalogas[kategorija]){
-        const collapseElementList = document.querySelectorAll('.collapse')
-        const collapseList = [...collapseElementList].map(collapseEl => new bootstrap.Collapse(collapseEl)) 
         let ul = document.createElement('ul');
         accordionBody.appendChild(ul);
         let book1 = document.createElement('li');
