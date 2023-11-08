@@ -91,12 +91,12 @@ for (let kategorija in knyguKatalogas){
     accordionButton.classList="accordion-button";
     accordionButton.type='button';
     accordionButton.setAttribute("data-bs-toggle", "collapse");
-    accordionButton.setAttribute("data-bs-target", "#collapseOne");
+    accordionButton.setAttribute("data-bs-target", `#collapse${kategorija}`);
     accordionButton.setAttribute("aria-expanded", "true");
     accordionButton.setAttribute("aria-controls", "collapseOne");
     let accordionCollapse = document.createElement('div');
     accordionCollapse.classList='accordion-collapse collapse show';
-    accordionCollapse.setAttribute("id", "collapseOne");
+    accordionCollapse.setAttribute("id", `collapse${kategorija}`);
     accordionCollapse.setAttribute("data-bs-parent", "#accordionExample");
     let accordionBody = document.createElement('div');
     accordionBody.classList='accordion-body';
